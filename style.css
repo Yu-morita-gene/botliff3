@@ -1,0 +1,50 @@
+@charset 'utf-8';
+
+body{
+    font-family: '游ゴシック','メイリオ',sans-serif;
+}
+
+p{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(80,80,80);
+    margin-left: 30px;
+}
+
+a{
+    font-size: 8;
+    font-weight: normal;
+}
+
+#box-image{
+    width:5px;
+    height:5px;
+}
+
+.selectbox{
+    background-color: rgba(230,230,230,0.8);
+    width: 50px;
+    height: 10px;
+    margin-left: 50px;
+    font-size: 10px;
+}
+
+.coloricon{
+    width: 10px;
+    height: 10px;
+    border: solid;
+    border-radius: 2px;
+    border-color: rgb(30,30,30);
+}
+
+#white{
+    color:white;
+}
+
+#mokugray{
+    color:rgb(170, 170, 170);
+}
+
+#purple{
+    color:#4B236B
+}
