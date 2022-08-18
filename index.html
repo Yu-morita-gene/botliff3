@@ -1,0 +1,120 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeneT Order</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <!-- セレクトボックスにアイコンを挿入 -->    
+    <link rel="stylesheet" type="text/css" href="dist/css/dd.css" />
+
+</head>
+<body>
+
+    <form class="w-75 mx-auto">
+        <p class="mt-3">色(長袖)<span style="margin-right: 5em;"></span><a href="https://prod-toms-web.s3.amazonaws.com/assets/product/00102/pdf/color_chart/00102-CVL.pdf" target="_blank" rel="noopener noreferrer">色見本はこちら</a></p>
+        <select class="selectbox" name ="colorNum" is="ms-dropdown" required>
+            <option hidden value="">選択してください</option>
+            <option value="'001" data-image="">001　ホワイト</option>
+            <option value="'003" data-image="">003　杢グレー</option>
+            <option value="'014" data-image="">014　パープル</option>
+            <option value="'037" data-image="dist/images/icons/browser-chrome.png">037　アーミーグリーン</option>
+            <option value="'005">005　ブラック</option>
+            <option value="'020">020　イエロー</option>
+            <option value="'165">165　デイジー</option>
+            <option value="'015">015　オレンジ</option>
+            <option value="'010">010　レッド</option>
+            <option value="'112">112　バーガンディ</option>
+            <option value="'132">132　ライトピンク</option>
+            <option value="'011">011　ピンク</option>
+            <option value="'034">034　ターコイズ</option>
+            <option value="'032">032　ロイヤルブルー</option>
+            <option value="'031">031　ネイビー</option>
+        </select>
+        <p id="to_stock">在庫の確認はリンク先の<a href="https://tomsj.com/product/00102-CVL/#" target="_blank">”在庫を確認”へ</a></p>
+        
+        <p class="mt-3">長袖・半袖</p>
+        <p id="selected_size">※長袖が選択されています※</p>
+        
+        <p class="mt-3">デザイン</p>
+        <select class="selectbox" name="design" is="ms-dropdown" required>
+            <option hidden value="">選択してください</option>
+            <option value="logo" data-image="dist\images\icons\Amex-56.png" >ロゴ</option>
+            <option value="22">2022年版</option>
+            <option value="23">2023年版</option>
+        </select>
+
+        <p class="mt-3">サイズ(長袖)<span style="margin-right: 40px;"></span><a href="https://prod-toms-web.s3.amazonaws.com/assets/product/00102/pdf/size_chart/00102-CVL-silhouette.pdf" target="_blank">サイズ見本はこちら</a></p>
+        <select class="selectbox" name="size" is="ms-dropdown" required>
+            <option hidden value="">選択してください</option>
+            <option value="110">110</option>
+            <option value="130">130</option>
+            <option value="150">150</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="2XL">2XL</option>
+            <option value="3XL">3XL</option>                
+        </select>
+
+        <input type="submit" class="submit_button" value="カゴに入れる">
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script src="dist/js/dd.min.js"></script>
+    
+    <script>
+
+        $(document).ready(function () {
+            const liffId = "1657365828-3o8WY9rY";
+            initializeLiff(liffId);
+        })
+
+        function initializeLiff(liffId) {
+            liff.init({
+                liffId: liffId
+            }).then(() => {
+                initializeApp();
+            }).catch((err) => {
+                console.log('LIFF Initialization failed ', err);
+            });
+        }
+
+        function sendText(text) {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': text
+            }]).then(function () {
+                liff.closeWindow();
+            }).catch(function (error) {
+                window.alert('Failed to send message ' + error);
+            });
+        }
+
+        const params = (new URL(document.location)).searchParams;
+        const key = params.get('key');
+
+        $(function () {
+            $('form').submit(function () {
+                const commandName = "オーダー"
+                const colorNum = $('[name="colorNum"]').val();
+                const long_short  = "long"
+                const design  = $('[name="design"]').val();
+                const size = $('[name="size"]').val();
+                const msg = `${commandName}\n${colorNum}\n${long_short}\n${design}\n${size}`;
+                sendText(msg);
+                return false;
+            });
+        });
+
+    </script>
+
+</body>
+</html>
