@@ -58,7 +58,7 @@ a{
 .submit_button{
     width: 130px;
     height: 35px;
-    margin:30 0 0 30;
+    margin:30 0 0 10;
     background-color:rgb(17, 114, 146);
     color:white;
     border-radius: 2px;
