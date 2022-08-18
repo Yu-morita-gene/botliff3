@@ -13,29 +13,59 @@
 <body>
 
     <form class="w-75 mx-auto">
-        <p class="mt-3">色(長袖)<span style="margin-right: 5em;"></span><a href="https://prod-toms-web.s3.amazonaws.com/assets/product/00102/pdf/color_chart/00102-CVL.pdf" target="_blank" rel="noopener noreferrer">色見本はこちら</a></p>
+        <p class="mt-3">色(半袖)<span style="margin-right: 5em;"></span><a href="https://prod-toms-web.s3.amazonaws.com/assets/product/00102/pdf/color_chart/00102-CVL.pdf" target="_blank" rel="noopener noreferrer">色見本はこちら</a></p>
         <select class="selectbox" name ="colorNum" is="ms-dropdown" required>
             <option hidden value="">選択してください</option>
             <option value="'001" data-image="">001　ホワイト</option>
+            <option value="'044" data-image="">044　アッシュ</option>
+            <option value="'039" data-image="">039　オートミール</option>
+            <option value="'153" data-image="dist/images/icons/browser-chrome.png">153　シルバーグレー</option>
             <option value="'003" data-image="">003　杢グレー</option>
+            <option value="'129" data-image="">129　チャコール</option>
+            <option value="'109" data-image="">109　デニム</option>
+            <option value="'223" data-image="">223　スモークブラック</option>
+            <option value="'005" data-image="">005　ブラック</option>
+            <option value="'073" data-image="">073　アイボリー</option>
+            <option value="'106" data-image="">106　ナチュラル</option>
+            <option value="'134" data-image="">134　ライトイエロー</option>
+            <option value="'020" data-image="">020　イエロー</option>
+            <option value="'165" data-image="">165　デイジー</option>
+            <option value="'077" data-image="">077　ゴールドイエロー</option>
+            <option value="'170" data-image="">170　コーラルオレンジ</option>
+            <option value="'015" data-image="">015　オレンジ</option>
+            <option value="'038" data-image="">038　サンセットオレンジ</option>
+            <option value="'132" data-image="">132　ライトピンク</option>
+            <option value="'191" data-image="">191　ピーチ</option>
+            <option value="'011" data-image="">011　ピンク</option>
+            <option value="'146" data-image="">146　ホットピンク</option>
+            <option value="'169" data-image="">169　イタリアンレッド</option>
+            <option value="'010" data-image="">010　レッド</option>
+            <option value="'035" data-image="">035　ガーネットレッド</option>
+            <option value="'112" data-image="">112　バーガンディ</option>
+            <option value="'168" data-image="">168　チョコレート</option>
+            <option value="'024" data-image="">024　ライトグリーン</option>
+            <option value="'155" data-image="">155　ライム</option>
+            <option value="'194" data-image="">194　ブライトグリーン</option>
+            <option value="'025" data-image="">025　グリーン</option>
+            <option value="'193" data-image="">193　ディープグリーン</option>
+            <option value="'138" data-image="">138　アイビーグリーン</option>
+            <option value="'128" data-image="">128　オリーブ</option>
+            <option value="'037" data-image="">037　アーミーグリーン</option>
+            <option value="'131" data-image="">131　フォレスト</option>
+            <option value="'195" data-image="">195　アイスグリーン</option>
+            <option value="'095" data-image="">095　アクア</option>
+            <option value="'026" data-image="">026　ミントグリーン</option>
+            <option value="'196" data-image="">196　ミント</option>
+            <option value="'197" data-image="">197　ピーコックグリーン</option>
+            <option value="'188" data-image="">188　ライトパープル</option>
+            <option value="'019" data-image="">019　ラベンダー</option>
             <option value="'014" data-image="">014　パープル</option>
-            <option value="'037" data-image="dist/images/icons/browser-chrome.png">037　アーミーグリーン</option>
-            <option value="'005">005　ブラック</option>
-            <option value="'020">020　イエロー</option>
-            <option value="'165">165　デイジー</option>
-            <option value="'015">015　オレンジ</option>
-            <option value="'010">010　レッド</option>
-            <option value="'112">112　バーガンディ</option>
-            <option value="'132">132　ライトピンク</option>
-            <option value="'011">011　ピンク</option>
-            <option value="'034">034　ターコイズ</option>
-            <option value="'032">032　ロイヤルブルー</option>
-            <option value="'031">031　ネイビー</option>
+            <option value="'031" data-image="">031　ネイビー</option>
         </select>
-        <p id="to_stock">在庫の確認はリンク先の<a href="https://tomsj.com/product/00102-CVL/#" target="_blank">”在庫を確認”へ</a></p>
+        <p id="to_stock">在庫の確認はリンク先の<a href="https://tomsj.com/product/00085-CVT/" target="_blank">”在庫を確認”へ</a></p>
         
         <p class="mt-3">長袖・半袖</p>
-        <p id="selected_size">※長袖が選択されています※</p>
+        <p id="selected_size">※半袖が選択されています※</p>
         
         <p class="mt-3">デザイン</p>
         <select class="selectbox" name="design" is="ms-dropdown" required>
@@ -45,13 +75,18 @@
             <option value="23">2023年版</option>
         </select>
 
-        <p class="mt-3">サイズ(長袖)<span style="margin-right: 40px;"></span><a href="https://prod-toms-web.s3.amazonaws.com/assets/product/00102/pdf/size_chart/00102-CVL-silhouette.pdf" target="_blank">サイズ見本はこちら</a></p>
+        <p class="mt-3">サイズ(半袖)<span style="margin-right: 40px;"></span><a href="https://prod-toms-web.s3.amazonaws.com/assets/product/00102/pdf/size_chart/00102-CVL-silhouette.pdf" target="_blank">サイズ見本はこちら</a></p>
         <select class="selectbox" name="size" is="ms-dropdown" required>
             <option hidden value="">選択してください</option>
+            <option value="100">100</option>
             <option value="110">110</option>
+            <option value="120">120</option>
             <option value="130">130</option>
+            <option value="140">140</option>
             <option value="150">150</option>
-            <option value="XS">XS</option>
+            <option value="160">160</option>
+            <option value="WM">WM</option>
+            <option value="WL">WL</option>
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
@@ -73,7 +108,7 @@
     <script>
 
         $(document).ready(function () {
-            const liffId = "1657365828-3o8WY9rY";
+            const liffId = "1657365828-gLz6JX1J";
             initializeLiff(liffId);
         })
 
@@ -105,7 +140,7 @@
             $('form').submit(function () {
                 const commandName = "オーダー"
                 const colorNum = $('[name="colorNum"]').val();
-                const long_short  = "long"
+                const long_short  = "short"
                 const design  = $('[name="design"]').val();
                 const size = $('[name="size"]').val();
                 const msg = `${commandName}\n${colorNum}\n${long_short}\n${design}\n${size}`;
