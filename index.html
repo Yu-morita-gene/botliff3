@@ -69,18 +69,21 @@
             <option value="'731" data-image="dist/images/icons/731.png">731　ホワイト×ネイビー</option>
             <option value="'710" data-image="dist/images/icons/710.png">710　ホワイト×レッド</option>
             <option value="'705" data-image="dist/images/icons/705.png">705　ホワイト×ブラック</option>
+            <option value="'decline" >辞退します</option>
         </select>
         <p class="link" id="to_stock">在庫の確認はリンク先の<a class="link" href="https://tomsj.com/product/00085-CVT/" target="_blank">”在庫を確認”へ</a></p>
         
         <p class="mt-3">長袖・半袖</p>
         <p id="selected_size">※半袖が選択されています※</p>
         
-        <p class="mt-3">デザイン</p>
+        <p class="mt-3">デザイン</p><span style="margin-right: 40px;"></span><p>デザインもしくはサイズに「辞退します」が含まれると辞退になります</p>
         <select class="selectbox" name="design" is="ms-dropdown" required>
             <option hidden value="">選択してください</option>
             <option value="logo" data-image="dist\images\icons\logo2.png">ロゴ</option>
-            <option value="21" data-image="dist\images\icons\shinkiba2.png">2021年版</option>
-            <option value="22" data-image="dist\images\icons\ichikawa2.png">2022年版</option>
+<!--            <option value="21" data-image="dist\images\icons\shinkiba2.png">2021年版</option>-->
+<!--            <option value="22" data-image="dist\images\icons\ichikawa2.png">2022年版</option>-->
+<!--            <option value="23" data-image="dist\images\icons\osaka2.png">2023年版</option>-->
+            <option value="24" data-image="dist\images\icons\ichikawa2.png">2024年版</option>
         </select>
 
         <p class="mt-3">サイズ(半袖)<span style="margin-right: 40px;"></span><a class="link" href="https://prod-toms-web.s3.amazonaws.com/assets/product/00085/pdf/size_chart/00085-CVT-silhouette.pdf" target="_blank">サイズ見本はこちら</a></p>
@@ -101,6 +104,7 @@
             <option value="XL">XL</option>
             <option value="2XL">2XL</option>
             <option value="3XL">3XL</option>                
+            <option value="decline">辞退します</option>                
         </select>
 
         <input type="submit" class="submit_button" value="カゴに入れる">
