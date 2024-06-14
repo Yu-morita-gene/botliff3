@@ -78,13 +78,14 @@
         <p id="selected_size">※半袖が選択されています※</p>
         
         <p class="mt-3">デザイン</p>
-        <select class="selectbox" name="design" is="ms-dropdown" required>
-            <option hidden value="">選択してください</option>
-            <option value="logo" data-image="dist\images\icons\logo2.png">ロゴ</option>
+        <p id="selected_design">※新デザインが選択されています※</p>
+<!--        <select class="selectbox" name="design" is="ms-dropdown" required>-->
+<!--            <option hidden value="">選択してください</option>-->
+<!--            <option value="logo" data-image="dist\images\icons\logo2.png">ロゴ</option>-->
 <!--            <option value="21" data-image="dist\images\icons\shinkiba2.png">2021年版</option>-->
 <!--            <option value="22" data-image="dist\images\icons\ichikawa2.png">2022年版</option>-->
 <!--            <option value="23" data-image="dist\images\icons\osaka2.png">2023年版</option>-->
-            <option value="24" data-image="dist\images\icons\newdesignTBD2.png">2024年版</option>
+<!--            <option value="24" data-image="dist\images\icons\newdesignTBD2.png">2024年版</option>-->
         </select>
         <p class="link" style="margin-top:0px;">色もしくはサイズに「辞退します」が<br>含まれると辞退になります。</p>
         <p class="mt-3">サイズ(半袖)<span style="margin-right: 40px;"></span><a class="link" href="https://prod-toms-web.s3.amazonaws.com/assets/product/00085/pdf/size_chart/00085-CVT-silhouette.pdf" target="_blank">サイズ見本はこちら</a></p>
@@ -154,7 +155,8 @@
                 const commandName = "オーダー"
                 const colorNum = $('[name="colorNum"]').val();
                 const long_short  = "short"
-                const design  = $('[name="design"]').val();
+                const design  = "24"
+//                const design  = $('[name="design"]').val();
                 const size = $('[name="size"]').val();
                 const msg = `${commandName}\n${colorNum}\n${long_short}\n${design}\n${size}`;
                 sendText(msg);
