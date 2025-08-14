@@ -174,15 +174,23 @@
 
         $(function () {
             $('form').submit(function () {
-                const commandName = "オーダー"
-                const colorNum = $('[name="colorNum"]').val();
-                const long_short  = "short"
-                const design  = 25
-//                const design  = $('[name="design"]').val();
-                const size = $('[name="size"]').val();
-                const msg = `${commandName}\n${colorNum}\n${long_short}\n${design}\n${size}`;
-                sendText(msg);
+              const commandName = "オーダー";
+              const colorNum = $('[name="colorNum"]').val();
+              const long_short  = "short";
+              const design  = 25; // 固定
+              const size = $('[name="size"]').val();
+              const own = $('#own').prop('checked') ? 'OWN' : '';
+
+              // 「辞退」と自費の矛盾をガード
+              const isDecline = (String(colorNum).replace(/^'/,'') === '999') || (size === '辞退');
+              if (isDecline && own) {
+                alert('「辞退します」と「自費購入」は同時に選べません。選択を修正してください。');
                 return false;
+              }
+
+              const msg = `${commandName}\n${colorNum}\n${long_short}\n${design}\n${size}\n${own}`;
+              sendText(msg);
+              return false;
             });
         });
 
@@ -190,4 +198,5 @@
 
 </body>
 </html>
+
 
