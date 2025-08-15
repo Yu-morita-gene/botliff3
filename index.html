@@ -1,16 +1,37 @@
 <!--ジェネT半袖選択ページ-->
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeneT Order</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
-    <!-- セレクトボックスにアイコンを挿入 -->    
-    <link rel="stylesheet" type="text/css" href="dist/css/dd.css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeneT Order</title>
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+  <!-- セレクトボックス拡張（キャッシュ回避のためクエリ付与） -->
+  <link rel="stylesheet" href="dist/css/dd.css?v=1">
+
+  <!-- ★ 余白を詰めるためのCSS（Bootstrapのmt-3等は!importantなので、こちらも!importantで上書き） -->
+  <style>
+    .form-compact p{ margin:6px 0 !important; }
+    .form-compact .selectbox{ margin-bottom:8px !important; }
+    .form-compact .form-check{ margin:6px 0 4px !important; }
+    .form-compact .note{
+      font-size:0.82rem; line-height:1.2; margin:2px 0 8px !important; color:#666;
+    }
+    .form-compact .submit_button{ margin-top:8px !important; }
+    @media (max-width:420px){
+      .form-compact .note{ font-size:0.78rem; margin:2px 0 6px !important; }
+      .form-compact p{ margin:4px 0 !important; }
+    }
+  </style>
+  <!-- （任意）キャッシュ強制更新： -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 </head>
+
 <body>
     <form class="w-75 mx-auto form-compact">
         <p class="mt-3">色(半袖)</p>
@@ -178,6 +199,7 @@
 
 </body>
 </html>
+
 
 
 
