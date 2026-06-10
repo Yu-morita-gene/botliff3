@@ -22,14 +22,6 @@
       font-size:0.76rem; line-height:1.2; margin:0 0 4px !important; color:#666;
     }
     .form-compact .submit_button{ margin-top:4px !important; }
-    .form-compact .design-preview{ margin:2px 0 6px !important; }
-    .form-compact .design-preview-swatch{
-      width:130px; aspect-ratio:143/110; border:1px solid #ddd; overflow:hidden;
-      display:flex; align-items:center; justify-content:center; background:#fff;
-    }
-    .form-compact .design-preview-swatch img{
-      width:100%; height:100%; object-fit:contain; display:block;
-    }
     @media (max-width:420px){
       .form-compact .note{ font-size:0.72rem; margin:0 0 4px !important; }
       .form-compact p{ margin:4px 0 !important; }
@@ -108,11 +100,6 @@
 
         <p class="mt-3">デザイン</p>
         <p id="selected_design">※新デザインが選択されています※</p>
-        <div class="design-preview" aria-hidden="true">
-            <div id="design_preview_base" class="design-preview-swatch">
-                <img id="design_preview_icon" src="dist/images/icons/tokyo2026-2.png" alt="">
-            </div>
-        </div>
 <!--        <select class="selectbox" name="design" is="ms-dropdown" required>-->
 <!--            <option hidden value="">選択してください</option>-->
 <!--            <option value="logo" data-image="dist\images\icons\logo2.png">ロゴ</option>-->
@@ -191,43 +178,39 @@
         const params = (new URL(document.location)).searchParams;
         const key = params.get('key');
 
+        const designIconLight = 'dist/images/icons/tokyo2026-1.png';
+        const designIconDark = 'dist/images/icons/tokyo2026-2.png';
+        const colorHexByNum = {
+          '001':'#FFFFFF','073':'#DED1C1','044':'#CDD1D7','039':'#E3E4E0','003':'#9B9EA3',
+          '153':'#D3D3D3','129':'#7E7E7E','223':'#343434','005':'#000000','141':'#E9E7DE',
+          '455':'#E8DBC9','106':'#EFE8D6','134':'#FFF9B1','020':'#FFF152','165':'#FFD600',
+          '015':'#EB5E02','010':'#CF0F1A','035':'#B1070A','151':'#DCD0CE','132':'#FDDFDF',
+          '400':'#DFAE9F','011':'#EE98BF','146':'#D80067','112':'#6B0624','136':'#C7A575',
+          '236':'#AA7C4B','453':'#4F3A29','133':'#B7E0F6','426':'#98B0C5','463':'#6F83B8',
+          '198':'#0060AD','032':'#044191','171':'#202583','097':'#003056','167':'#001D59',
+          '031':'#01092E','034':'#029DD6','109':'#54595f','195':'#C0E2E1','423':'#A1B79E',
+          '024':'#AAE203','025':'#01853A','138':'#184001','128':'#5D521A','037':'#4E592E',
+          '427':'#B2A0B9','188':'#CDB4D1','014':'#5B0E78','422':'#D27D87','424':'#6C7B66',
+          '213':'#E7C58A','206':'#0B423F','207':'#43393A','999':'#FFFFFF'
+        };
+
+        function isDarkColor(hex) {
+          const value = hex.replace('#', '');
+          const red = parseInt(value.slice(0, 2), 16);
+          const green = parseInt(value.slice(2, 4), 16);
+          const blue = parseInt(value.slice(4, 6), 16);
+          return ((red * 299 + green * 587 + blue * 114) / 1000) < 160;
+        }
+
+        function getDesignIconPathByColorNum(colorNum) {
+          colorNum = String(colorNum || '').replace(/^'/, '');
+          const colorHex = colorHexByNum[colorNum] || '#FFFFFF';
+          return isDarkColor(colorHex) ? designIconLight : designIconDark;
+        }
+
+        window.getDesignIconPathByColorNum = getDesignIconPathByColorNum;
+
         $(function () {
-            const designIconLight = 'dist/images/icons/tokyo2026-1.png';
-            const designIconDark = 'dist/images/icons/tokyo2026-2.png';
-            const colorHexByNum = {
-              '001':'#FFFFFF','073':'#DED1C1','044':'#CDD1D7','039':'#E3E4E0','003':'#9B9EA3',
-              '153':'#D3D3D3','129':'#7E7E7E','223':'#343434','005':'#000000','141':'#E9E7DE',
-              '455':'#E8DBC9','106':'#EFE8D6','134':'#FFF9B1','020':'#FFF152','165':'#FFD600',
-              '015':'#EB5E02','010':'#CF0F1A','035':'#B1070A','151':'#DCD0CE','132':'#FDDFDF',
-              '400':'#DFAE9F','011':'#EE98BF','146':'#D80067','112':'#6B0624','136':'#C7A575',
-              '236':'#AA7C4B','453':'#4F3A29','133':'#B7E0F6','426':'#98B0C5','463':'#6F83B8',
-              '198':'#0060AD','032':'#044191','171':'#202583','097':'#003056','167':'#001D59',
-              '031':'#01092E','034':'#029DD6','109':'#54595f','195':'#C0E2E1','423':'#A1B79E',
-              '024':'#AAE203','025':'#01853A','138':'#184001','128':'#5D521A','037':'#4E592E',
-              '427':'#B2A0B9','188':'#CDB4D1','014':'#5B0E78','422':'#D27D87','424':'#6C7B66',
-              '213':'#E7C58A','206':'#0B423F','207':'#43393A','999':'#FFFFFF'
-            };
-
-            function isDarkColor(hex) {
-              const value = hex.replace('#', '');
-              const red = parseInt(value.slice(0, 2), 16);
-              const green = parseInt(value.slice(2, 4), 16);
-              const blue = parseInt(value.slice(4, 6), 16);
-              return ((red * 299 + green * 587 + blue * 114) / 1000) < 160;
-            }
-
-            function updateDesignPreview() {
-              const colorNum = String($('[name="colorNum"]').val() || '').replace(/^'/, '');
-              const colorHex = colorHexByNum[colorNum] || '#FFFFFF';
-              const iconPath = isDarkColor(colorHex) ? designIconLight : designIconDark;
-              $('#design_preview_base').css('background-color', colorHex);
-              $('#design_preview_icon').attr('src', iconPath);
-            }
-
-            updateDesignPreview();
-            $('.form-compact').on('change mouseup keyup', function () {
-              setTimeout(updateDesignPreview, 0);
-            });
 
             $('form').submit(function () {
               const commandName = "オーダー";
